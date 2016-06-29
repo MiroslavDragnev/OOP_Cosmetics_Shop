@@ -10,6 +10,8 @@ namespace Cosmetics.Products
 {
     public class Shampoo : Product, IShampoo
     {
+        private static readonly string[] UsageArray = { "EveryDay", "Medical" };
+
         public Shampoo(string name, string brand, decimal price, GenderType gender, uint milliliters, UsageType usage) :
             base(name, brand, price, gender)
         {
@@ -25,15 +27,10 @@ namespace Cosmetics.Products
         public override string Print()
         {
             var builder = new StringBuilder();
+
             builder.AppendLine(base.Print());
-
-            string str = string.Format("  * Quantity: {0} ml", this.Milliliters);
-            builder.AppendLine(str);
-
-            string[] uArr = { "EveryDay", "Medical" };
-
-            str = string.Format("  * Usage: {0}", uArr[(int)this.Usage]);
-            builder.AppendLine(str);
+            builder.AppendLine(string.Format("  * Quantity: {0} ml", this.Milliliters));
+            builder.AppendLine(string.Format("  * Usage: {0}", UsageArray[(int)this.Usage]));
 
             return builder.ToString().Trim();
         }

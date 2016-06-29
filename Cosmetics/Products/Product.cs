@@ -14,6 +14,7 @@ namespace Cosmetics.Products
         private const int NameMaxLength = 10;
         private const int BrandMinLength = 2;
         private const int BrandMaxLength = 10;
+        private readonly string[] GenderArray = { "Men", "Women", "Unisex" };
 
         private string name;
         private string brand;
@@ -103,16 +104,9 @@ namespace Cosmetics.Products
         {
             var builder = new StringBuilder();
 
-            var str = string.Format("- {0} - {1}:", this.Brand, this.Name);
-            builder.AppendLine(str);
-
-            str = string.Format("  * Price: ${0}", this.Price);
-            builder.AppendLine(str);
-
-            string[] gArr = { "Men", "Women", "Unisex" };
-
-            str = string.Format("  * For gender: {0}", gArr[(int)this.Gender]);
-            builder.AppendLine(str);
+            builder.AppendLine(string.Format("- {0} - {1}:", this.Brand, this.Name));
+            builder.AppendLine(string.Format("  * Price: ${0}", this.Price));
+            builder.AppendLine(string.Format("  * For gender: {0}", GenderArray[(int)this.Gender]));
 
             return builder.ToString().Trim();
         }

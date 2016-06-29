@@ -29,10 +29,9 @@ namespace Cosmetics.Products
         public override string Print()
         {
             var builder = new StringBuilder();
+
             builder.AppendLine(base.Print());
-            
-            string str = string.Format("  * Ingredients: {0}", this.Ingredients);
-            builder.AppendLine(str);
+            builder.AppendLine(string.Format("  * Ingredients: {0}", this.Ingredients));
 
             return builder.ToString().Trim();
         }

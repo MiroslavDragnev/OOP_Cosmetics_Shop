@@ -56,8 +56,10 @@ namespace Cosmetics.Engine
         {
             var builder = new StringBuilder();
 
-            var str = string.Format("{0} category - {1} {2} in total", this.Name, this.ProductsList.Count, this.ProductsList.Count == 1 ? "product":"products");
-            builder.AppendLine(str);
+            builder.AppendLine(string.Format("{0} category - {1} {2} in total", 
+                this.Name, 
+                this.ProductsList.Count, 
+                this.ProductsList.Count == 1 ? "product" : "products"));
 
             var newList = this.ProductsList.OrderBy(x => x.Brand).ThenByDescending(x => x.Price);
 
